@@ -9,7 +9,7 @@
 </head>
 <body>
     <div class="container min-vw-100 p-0">
-        <div class="row min-vw-100 m-0">
+        <div class="row min-vw-100 mx-auto">
           <div class="col-9 badge-info min-vw-100 p-3 ">
               <h1 class="text-white text-center">Weather Dashboard</h1>
           </div>
@@ -33,10 +33,35 @@
             <div class="card">
                 <div class="card-body">
                   <h5 class="card-title" id="city-title"></h5>
-                  Temperature: <span class="weather" id="temperature"></span><br>
-                  Humidity: <span class="weather" id="humidity"></span><br>
-                  Wind Speed: <span class="weather" id="wind-speed"></span><br>
-                  UV Index: <span class="weather" id='uv-badge'></span>
+                  <div class="input-group input-group-sm mb-3">
+                    <div class="input-group-prepend">
+                      <span class="">Temperature: </span>
+                    </div>
+                    <input type="text" class="border-0" id="temperature">
+                  </div>
+                  <div class="input-group input-group-sm mb-3">
+                    <div class="input-group-prepend">
+                      <span class="">Humidity:  </span>
+                    </div>
+                    <input type="text" class="border-0" id="humidity">
+                  </div>
+                  <div class="input-group input-group-sm mb-3">
+                    <div class="input-group-prepend">
+                      <span class="">Wind-Speed: </span>
+                    </div>
+                    <input type="text" class="border-0" id="wind-speed">
+                  </div>
+                  <div class="input-group input-group-sm mb-3">
+                    <div class="input-group-prepend">
+                      <span class="pr-1">UV: </span>
+                    </div>
+                    <span type="text" class="border-0 rounded-pill" id="uv-badge"></span>
+                  </div>
+                  
+                  <!-- <label for="temperature">Temperature:</label> <div class="weather" id="temperature"></div>
+                  Humidity: <div class="weather" id="humidity"></div>
+                  Wind Speed: <div class="weather" id="wind-speed"></div>
+                  UV Index: <div class="weather" id='uv-badge'></div> -->
                 </div>
               </div>
               <h5 class="mt-4">5-Day Forecast:</h5>
