@@ -25,7 +25,7 @@ var year = currentDate.getFullYear();
 searchBtn.click(function(){
        cityInput = $('#city-input').val().trim().toLowerCase(); 
        console.log(cityInput)
-      var cityName = []; 
+      var cityName = ''; 
        
         var weatherURL = "https://api.openweathermap.org/data/2.5/weather?q=" + cityInput  + "&appid=" + APIKey;
           $.ajax({
@@ -49,7 +49,7 @@ searchBtn.click(function(){
         humidityDisplay.val(" " + response.main.humidity + "%");
         windDisplay.val(" " + response.wind.speed + ' MPH'); 
 
-        cityName.push(response.name); 
+        cityName = response.name; 
         console.log(cityName); 
        
         
@@ -115,11 +115,11 @@ searchBtn.click(function(){
 function renderCities(){ 
   $('#city-list').empty(); 
   var cities = [];
-  cities.push(localStorage.getItem(JSON.parse('key'))); 
+  cities.push(JSON.parse(localStorage.getItem("key"))); 
   console.log(cities); 
   $(cities).each(function(index){ 
     var city = cities[index]; 
-    if(city !== null){
+    if(city !== null || cities.length !== 0){
       var cityName = $('<button class="search-btn border-0 badge-info">'); 
       cityName.text(city);
       $('#city-list').append(cityName); 
