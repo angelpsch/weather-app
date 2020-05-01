@@ -49,9 +49,9 @@ searchBtn.click(function(){
         humidityDisplay.val(" " + response.main.humidity + "%");
         windDisplay.val(" " + response.wind.speed + ' MPH'); 
 
-        cityName = response.name; 
-        console.log(cityName); 
-       
+        localStorage.setItem('key', JSON.stringify(response.name)); 
+        renderCities(); 
+        
         
         var uvURL = "https://api.openweathermap.org/data/2.5/uvi?appid=" + APIKey + "&lat=" + lat + "&lon=" + lon;
           $.ajax({
@@ -108,8 +108,7 @@ searchBtn.click(function(){
       });
       });
        
-    localStorage.setItem('key', JSON.stringify(cityName)); 
-    renderCities(); 
+    
    }); 
 
 function renderCities(){ 
@@ -119,7 +118,7 @@ function renderCities(){
   console.log(cities); 
   $(cities).each(function(index){ 
     var city = cities[index]; 
-    if(city !== null || cities.length !== 0){
+    if(city !== null || cities.length !== 0 || cities.includes(city) == false){
       var cityName = $('<button class="search-btn border-0 badge-info">'); 
       cityName.text(city);
       $('#city-list').append(cityName); 
