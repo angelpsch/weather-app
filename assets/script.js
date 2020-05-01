@@ -53,7 +53,7 @@ searchBtn.click(function(){
         console.log(cityName); 
        
         
-        var uvURL = "http://api.openweathermap.org/data/2.5/uvi?appid=" + APIKey + "&lat=" + lat + "&lon=" + lon;
+        var uvURL = "https://api.openweathermap.org/data/2.5/uvi?appid=" + APIKey + "&lat=" + lat + "&lon=" + lon;
           $.ajax({
         url: uvURL,
         method: "GET"
@@ -71,7 +71,7 @@ searchBtn.click(function(){
         uvIndex.text(response.value); 
   
       });
-        var fiveDayURL = "http://api.openweathermap.org/data/2.5/forecast?q=" + 'chicago' + '&appid=' + APIKey;
+        var fiveDayURL = "https://api.openweathermap.org/data/2.5/forecast?q=" + 'chicago' + '&appid=' + APIKey;
           $.ajax({
         url: fiveDayURL,
         method: "GET"
