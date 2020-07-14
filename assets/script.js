@@ -1,6 +1,7 @@
 // 92b8d2f944302fe08320a81c80bff075
 
 $(document).ready(function () {
+  //button to search api on click
   $("#search-btn").on("click", function () {
     var searchInput = $("#search-value").val();
     $("#search-value").val("");
@@ -41,48 +42,16 @@ $(document).ready(function () {
         var temp = $("<p>").addClass("card-text").text("Temperature: " + Math.round(((data.main.temp)-273.15) * (9/5) + 32) + " °F");
         var cardBody = $("<div>").addClass("card-body");
 
-
-        
         cardBody.append(title, temp, humid, wind);
         card.append(cardBody);
         $("#current-day").append(card);
-
-
         fiveDayForecast(searchInput);
         uvIndex(data.coord.lat, data.coord.lon);
       }
     });
   }
 
-  function fiveDayForecast(searchInput) {
-    $.ajax({
-      type: "GET",
-      url: "https://api.openweathermap.org/data/2.5/forecast?q=" + searchInput + "&appid=92b8d2f944302fe08320a81c80bff075",
-      dataType: "json",
-      success: function (data) {
-
-        $("#forecast").html("<h4 class=\"mt-3\">5-Day Forecast:</h4>").append("<div class=\"row\">");
-
-
-        for (var i = 0; i < data.list.length; i++) {
-          if (data.list[i].dt_txt.indexOf("15:00:00") !== -1) {
-            var col = $("<div>").addClass("col-md-2");
-            var card = $("<div>").addClass("card bg-primary text-white");
-            var body = $("<div>").addClass("card-body p-2");
-
-            var title = $("<h5>").addClass("card-title").text(new Date(data.list[i].dt_txt).toLocaleDateString());
-            var p1 = $("<p>").addClass("card-text").text("Temp: " + Math.round(((data.list[i].main.temp_max)-273.15) * (9/5) + 32) + " °F");
-            var p2 = $("<p>").addClass("card-text").text("Humidity: " + data.list[i].main.humidity + "%");
-
-
-            col.append(card.append(body.append(title, p1, p2)));
-            $("#forecast .row").append(col);
-          }
-        }
-      }
-    });
-  }
-
+  
   function uvIndex(lat, lon) {
     $.ajax({
       type: "GET",
@@ -116,3 +85,29 @@ $(document).ready(function () {
     makeRow(cities[i]);
   }
 });
+function fiveDayForecast(searchInput) {
+  $.ajax({
+    type: "GET",
+    url: "https://api.openweathermap.org/data/2.5/forecast?q=" + searchInput + "&appid=92b8d2f944302fe08320a81c80bff075",
+    dataType: "json",
+    success: function (data) {
+
+      $("#forecast").html("<h4 class=\"mt-3\">5-Day Forecast:</h4>").append("<div class=\"row\">");
+      for (var i = 0; i < data.list.length; i++) {
+        if (data.list[i].dt_txt.indexOf("15:00:00") !== -1) {
+          var col = $("<div>").addClass("col-md-2");
+          var card = $("<div>").addClass("card bg-primary text-white");
+          var body = $("<div>").addClass("card-body p-2");
+
+          var title = $("<h5>").addClass("card-title").text(new Date(data.list[i].dt_txt).toLocaleDateString());
+          var p1 = $("<p>").addClass("card-text").text("Temp: " + Math.round(((data.list[i].main.temp_max)-273.15) * (9/5) + 32) + " °F");
+          var p2 = $("<p>").addClass("card-text").text("Humidity: " + data.list[i].main.humidity + "%");
+
+
+          col.append(card.append(body.append(title, p1, p2)));
+          $("#forecast .row").append(col);
+        }
+      }
+    }
+  });
+}
