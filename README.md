@@ -4,7 +4,7 @@
 
 ## Description
 
-This is an jQuery application that uses an API to get weather forecasts
+This is a jQuery application that uses an API to get weather forecasts
 
 ## Usage
 
