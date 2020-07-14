@@ -40,10 +40,9 @@ $(document).ready(function () {
         var humid = $("<p>").addClass("card-text").text("Humidity: " + data.main.humidity + "%");
         var temp = $("<p>").addClass("card-text").text("Temperature: " + Math.round(((data.main.temp)-273.15) * (9/5) + 32) + " °F");
         var cardBody = $("<div>").addClass("card-body");
-        var img = $("<img>").attr("src", "https://openweathermap.org/img/w/" + data.weather[0].icon + ".png");
 
 
-        title.append(img);
+        
         cardBody.append(title, temp, humid, wind);
         card.append(cardBody);
         $("#current-day").append(card);
@@ -72,14 +71,11 @@ $(document).ready(function () {
             var body = $("<div>").addClass("card-body p-2");
 
             var title = $("<h5>").addClass("card-title").text(new Date(data.list[i].dt_txt).toLocaleDateString());
-
-            var img = $("<img>").attr("src", "https://openweathermap.org/img/w/" + data.list[i].weather[0].icon + ".png");
-
             var p1 = $("<p>").addClass("card-text").text("Temp: " + Math.round(((data.list[i].main.temp_max)-273.15) * (9/5) + 32) + " °F");
             var p2 = $("<p>").addClass("card-text").text("Humidity: " + data.list[i].main.humidity + "%");
 
 
-            col.append(card.append(body.append(title, img, p1, p2)));
+            col.append(card.append(body.append(title, p1, p2)));
             $("#forecast .row").append(col);
           }
         }
