@@ -8,78 +8,30 @@
     <title>Weather App</title>
 </head>
 <body>
-    <div class="container min-vw-100 p-0">
-        <div class="row min-vw-100 mx-auto">
-          <div class="col-9 badge-info min-vw-100 p-3 ">
-              <h1 class="text-white text-center">Weather Dashboard</h1>
-          </div>
-          <div class="col-2 ml-2 badge-light min-vh-100">
-              <label for="city-input" class="lead pt-4"><strong>Search for a city:</strong></label>
-              <div class="input-group-append w-75">
-                <input type="text" class="form-control" id="city-input">
-                <button type="button" class="btn btn-outline-secondary badge-info search-btn">
-                    <svg class="bi bi-search mb-1" width="1em" height="1em" fill="white" xmlns="http://www.w3.org/2000/svg">
-                        <path fill-rule="evenodd" d="M10.442 10.442a1 1 0 011.415 0l3.85 3.85a1 1 0 01-1.414 1.415l-3.85-3.85a1 1 0 010-1.415z" clip-rule="evenodd"/>
-                        <path fill-rule="evenodd" d="M6.5 12a5.5 5.5 0 100-11 5.5 5.5 0 000 11zM13 6.5a6.5 6.5 0 11-13 0 6.5 6.5 0 0113 0z" clip-rule="evenodd"/>
-                      </svg>
-                </button>
-              
-          </div>  
-            <ul id="city-list" class="list-group mt-4">
-                   
-                </ul>
-          </div>
-          <div class="col-9 m-0 mt-3"> <!--forcast column-->
-            <div class="card">
-                <div class="card-body">
-                  <h5 class="card-title" id="city-title"></h5>
-                  <div class="input-group input-group-sm mb-3">
-                    <div class="input-group-prepend">
-                      <span class="">Temperature: </span>
-                    </div>
-                    <input type="text" class="border-0" id="temperature">
-                  </div>
-                  <div class="input-group input-group-sm mb-3">
-                    <div class="input-group-prepend">
-                      <span class="">Humidity:  </span>
-                    </div>
-                    <input type="text" class="border-0" id="humidity">
-                  </div>
-                  <div class="input-group input-group-sm mb-3">
-                    <div class="input-group-prepend">
-                      <span class="">Wind-Speed: </span>
-                    </div>
-                    <input type="text" class="border-0" id="wind-speed">
-                  </div>
-                  <div class="input-group input-group-sm mb-3">
-                    <div class="input-group-prepend">
-                      <span class="pr-1">UV: </span>
-                    </div>
-                    <span type="text" class="border-0 rounded-pill" id="uv-badge"></span>
-                  </div>
-                  
-                  <!-- <label for="temperature">Temperature:</label> <div class="weather" id="temperature"></div>
-                  Humidity: <div class="weather" id="humidity"></div>
-                  Wind Speed: <div class="weather" id="wind-speed"></div>
-                  UV Index: <div class="weather" id='uv-badge'></div> -->
-                </div>
-              </div>
-              <h5 class="mt-4">5-Day Forecast:</h5>
-                <div class="row" id="future-forcast">  
-                <!-- <div class="col-2">
-                    <div class="card badge-info">
-                    <div class="card-body">
-                        <h5 class="card-title" id="date">Date</h5>
-                        <p class="weather">With supporting text below as a natural lead-in to additional content.</p>
-                    </div>
-                    </div> -->
-                </div> <!--end of future-forcast-->
-                </div> 
-          </div>
+  <header class="container-fluid text-center text-white bg-info p-2">
+    <h1>Weather Dashboard</h1>
+  </header>
 
+  <div class="container-fluid">
+    <div class="row">
+      <aside class="col-lg-3 bg-light">
+        <h5 class="mt-1">Search for a City:</h5>
+        <div class="form-inline form-group">
+          <input class="form-control" type="text" id="search-value" />
+          <button class="btn btn-primary" id="search-btn"> Search </button>
         </div>
+
+        <ul class="list-group cities"></ul>
+      </aside>
+
+      <div class="col-lg-9">
+        <div id="today" class="mt-3"></div>
+        <div id="forecast" class="mt-3"></div>
       </div>
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-      <script src="./assets/script.js" type="text/javascript"></script>
+    </div>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+  <script src="assets/script.js"></script>
 </body>
 </html>
