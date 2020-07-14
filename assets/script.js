@@ -32,7 +32,7 @@ $(document).ready(function () {
         }
 
 
-        $("#today").empty();
+        $("#current-day").empty();
 
         var title = $("<h3>").addClass("card-title").text(data.name + " (" + new Date().toLocaleDateString() + ")");
         var card = $("<div>").addClass("card");
@@ -46,7 +46,7 @@ $(document).ready(function () {
         title.append(img);
         cardBody.append(title, temp, humid, wind);
         card.append(cardBody);
-        $("#today").append(card);
+        $("#current-day").append(card);
 
 
         fiveDayForecast(searchInput);
@@ -105,7 +105,7 @@ $(document).ready(function () {
           btn.addClass("btn-danger");
         }
 
-        $("#today .card-body").append(uv.append(btn));
+        $("#current-day .card-body").append(uv.append(btn));
       }
     });
   }
