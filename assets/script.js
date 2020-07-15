@@ -3,8 +3,8 @@
 $(document).ready(function () {
   //button to search api on click
   $("#search-btn").on("click", function () {
-    var searchInput = $("#search-value").val();
-    $("#search-value").val("");
+    var searchInput = $("#search-input").val();
+    $("#search-input").val("");
     weatherSearch(searchInput);
   });
 
