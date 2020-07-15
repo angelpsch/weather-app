@@ -13,7 +13,8 @@ $(document).ready(function () {
     weatherSearch($(this).text());
   });
 
-  function makeRow(text) {
+
+  function Row(text) {
     var li = $("<li>").addClass("list-group-item list-group-item-action").text(text);
     $(".cities").append(li);
   }
@@ -29,7 +30,7 @@ $(document).ready(function () {
           cities.push(searchInput);
           window.localStorage.setItem("cities", JSON.stringify(cities));
 
-          makeRow(searchInput);
+          Row(searchInput);
         }
 
 
@@ -40,10 +41,10 @@ $(document).ready(function () {
         var wind = $("<p>").addClass("card-text").text("Wind Speed: " + data.wind.speed + " MPH");
         var humid = $("<p>").addClass("card-text").text("Humidity: " + data.main.humidity + "%");
         var temp = $("<p>").addClass("card-text").text("Temperature: " + Math.round(((data.main.temp)-273.15) * (9/5) + 32) + " °F");
-        var cardBody = $("<div>").addClass("card-body");
+        var cardContent = $("<div>").addClass("card-body");
 
-        cardBody.append(title, temp, humid, wind);
-        card.append(cardBody);
+        cardContent.append(title, temp, humid, wind);
+        card.append(cardContent);
         $("#current-day").append(card);
         fiveDayForecast(searchInput);
         uvIndex(data.coord.lat, data.coord.lon);
@@ -82,7 +83,7 @@ $(document).ready(function () {
   }
 
   for (var i = 0; i < cities.length; i++) {
-    makeRow(cities[i]);
+    Row(cities[i]);
   }
 });
 function fiveDayForecast(searchInput) {
@@ -96,7 +97,7 @@ function fiveDayForecast(searchInput) {
       for (var i = 0; i < data.list.length; i++) {
         if (data.list[i].dt_txt.indexOf("15:00:00") !== -1) {
           var col = $("<div>").addClass("col-md-2");
-          var card = $("<div>").addClass("card bg-primary text-white");
+          var card = $("<div>").addClass("card bg-info text-white");
           var body = $("<div>").addClass("card-body p-2");
 
           var title = $("<h5>").addClass("card-title").text(new Date(data.list[i].dt_txt).toLocaleDateString());
