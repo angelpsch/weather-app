@@ -36,13 +36,14 @@ $(document).ready(function () {
 
         $("#current-day").empty();
 
-        var title = $("<h3>").addClass("card-title").text(data.name + " (" + new Date().toLocaleDateString() + ")");
+        // html elements
+        var title = $("<h2 style='font-style:italic;'>").addClass("card-title").text(data.name + " (" + new Date().toLocaleDateString() + ")");
         var card = $("<div>").addClass("card");
         var wind = $("<p>").addClass("card-text").text("Wind Speed: " + data.wind.speed + " MPH");
         var humid = $("<p>").addClass("card-text").text("Humidity: " + data.main.humidity + "%");
         var temp = $("<p>").addClass("card-text").text("Temperature: " + Math.round(((data.main.temp)-273.15) * (9/5) + 32) + " °F");
         var cardContent = $("<div>").addClass("card-body");
-
+        // append elements 
         cardContent.append(title, temp, humid, wind);
         card.append(cardContent);
         $("#current-day").append(card);
@@ -93,7 +94,7 @@ function fiveDayForecast(searchInput) {
     dataType: "json",
     success: function (data) {
 
-      $("#forecast").html("<h4 class=\"mt-3\">5-Day Forecast:</h4>").append("<div class=\"row\">");
+      $("#fiveDayForecast").html("<p class=\"mt-3\">5-Day Forecast:</p>").append("<div class=\"row\">");
       for (var i = 0; i < data.list.length; i++) {
         if (data.list[i].dt_txt.indexOf("15:00:00") !== -1) {
           var col = $("<div>").addClass("col-md-2");
@@ -101,12 +102,12 @@ function fiveDayForecast(searchInput) {
           var body = $("<div>").addClass("card-body p-2");
 
           var title = $("<h5>").addClass("card-title").text(new Date(data.list[i].dt_txt).toLocaleDateString());
-          var p1 = $("<p>").addClass("card-text").text("Temp: " + Math.round(((data.list[i].main.temp_max)-273.15) * (9/5) + 32) + " °F");
-          var p2 = $("<p>").addClass("card-text").text("Humidity: " + data.list[i].main.humidity + "%");
+          var pOne = $("<p>").addClass("card-text").text("Temp: " + Math.round(((data.list[i].main.temp_max)-273.15) * (9/5) + 32) + " °F");
+          var pTwo = $("<p>").addClass("card-text").text("Humidity: " + data.list[i].main.humidity + "%");
 
 
-          col.append(card.append(body.append(title, p1, p2)));
-          $("#forecast .row").append(col);
+          col.append(card.append(body.append(title, pOne, pTwo)));
+          $("#fiveDayForecast .row").append(col);
         }
       }
     }
